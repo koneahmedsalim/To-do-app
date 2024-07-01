@@ -123,12 +123,12 @@ class Restaurant extends ChangeNotifier {
   // Calculate total price
   double getTotalPrice() {
     double total = 0.0;
-    for (var cartItem in _cart) {
+    for ( CartItem cartItem in _cart) {
       double itemTotal = cartItem.food.price * cartItem.quantity;
-      for (var addon in cartItem.selectedAddons) {
-        itemTotal += addon.price * cartItem.quantity;
+      for ( Addon addon in cartItem.selectedAddons) {
+        itemTotal += addon.price ;
       }
-      total += itemTotal;
+      total += itemTotal * cartItem.quantity;
     }
     return total;
   }
