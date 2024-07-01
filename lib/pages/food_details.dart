@@ -8,7 +8,7 @@ class FoodDetails extends StatefulWidget {
   @override
   State<FoodDetails> createState() => _FoodDetailsState();
 }
-
+//error
 class _FoodDetailsState extends State<FoodDetails> {
   @override
   Widget build(BuildContext context) {
