@@ -59,7 +59,11 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images
+    - lib/assets/african/
+    - lib/assets/burger/
+    - lib/assets/drinks/
+    - lib/assets/salades/
+    - lib/assets/pizza/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
