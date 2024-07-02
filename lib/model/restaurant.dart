@@ -16,6 +16,50 @@ class Restaurant extends ChangeNotifier {
         imagePath: "assets/african/foutou_bananne.jpeg",
         price: 8000,
         name: "Foutou Bananne"),
+    Food(
+        category: FoodCategory.african,
+        availableAddons: [
+          Addon(name: "extra sauce", price: 200),
+          Addon(name: "extra foutou", price: 1000),
+          Addon(name: "extra viandes", price: 1500),
+        ],
+        description: "Foutou Bananne",
+        imagePath: "assets/african/foutou_bananne.jpeg",
+        price: 8000,
+        name: "Foutou Bananne"),
+    Food(
+        category: FoodCategory.african,
+        availableAddons: [
+          Addon(name: "extra sauce", price: 200),
+          Addon(name: "extra foutou", price: 1000),
+          Addon(name: "extra viandes", price: 1500),
+        ],
+        description: "Foutou Bananne",
+        imagePath: "assets/african/foutou_bananne.jpeg",
+        price: 8000,
+        name: "Foutou Bananne"),
+    Food(
+        category: FoodCategory.african,
+        availableAddons: [
+          Addon(name: "extra sauce", price: 200),
+          Addon(name: "extra foutou", price: 1000),
+          Addon(name: "extra viandes", price: 1500),
+        ],
+        description: "Foutou Bananne",
+        imagePath: "assets/african/foutou_bananne.jpeg",
+        price: 8000,
+        name: "Foutou Bananne"),
+    Food(
+        category: FoodCategory.african,
+        availableAddons: [
+          Addon(name: "extra sauce", price: 200),
+          Addon(name: "extra foutou", price: 1000),
+          Addon(name: "extra viandes", price: 1500),
+        ],
+        description: "Foutou Bananne",
+        imagePath: "assets/african/foutou_bananne.jpeg",
+        price: 8000,
+        name: "Foutou Bananne"),
     //salads
     Food(
         category: FoodCategory.salads,
@@ -68,7 +112,42 @@ class Restaurant extends ChangeNotifier {
         category: FoodCategory.drinks,
         availableAddons: [],
         description: "Coca",
-        imagePath: "assets/drinks/coca.jpeg",
+        imagePath: "lib\assets\drinks\coca.png",
+        price: 1000,
+        name: "Coca"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
+        description: "Coca",
+        imagePath: "lib\assets\drinks\coca.png",
+        price: 1000,
+        name: "Coca"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
+        description: "Coca",
+        imagePath: "lib\assets\drinks\coca.png",
+        price: 1000,
+        name: "Coca"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
+        description: "Coca",
+        imagePath: "lib\assets\drinks\coca.png",
+        price: 1000,
+        name: "Coca"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
+        description: "Coca",
+        imagePath: "lib\assets\drinks\coca.png",
+        price: 1000,
+        name: "Coca"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
+        description: "Coca",
+        imagePath: "lib\assets\drinks\coca.png",
         price: 1000,
         name: "Coca"),
     //sides
@@ -95,14 +174,16 @@ class Restaurant extends ChangeNotifier {
   void addToCart(Food food, List<Addon> selectedAddons) {
     CartItem? cartItem = _cart.firstWhereOrNull((item) {
       bool isSameFood = item.food == food;
-      bool isSameAddons = ListEquality().equals(item.selectedAddons, selectedAddons);
+      bool isSameAddons =
+          ListEquality().equals(item.selectedAddons, selectedAddons);
       return isSameFood && isSameAddons;
     });
 
     if (cartItem != null) {
       cartItem.quantity++;
     } else {
-      _cart.add(CartItem(food: food, selectedAddons: selectedAddons, quantity: 1));
+      _cart.add(
+          CartItem(food: food, selectedAddons: selectedAddons, quantity: 1));
     }
     notifyListeners();
   }
@@ -123,10 +204,10 @@ class Restaurant extends ChangeNotifier {
   // Calculate total price
   double getTotalPrice() {
     double total = 0.0;
-    for ( CartItem cartItem in _cart) {
+    for (CartItem cartItem in _cart) {
       double itemTotal = cartItem.food.price * cartItem.quantity;
-      for ( Addon addon in cartItem.selectedAddons) {
-        itemTotal += addon.price ;
+      for (Addon addon in cartItem.selectedAddons) {
+        itemTotal += addon.price;
       }
       total += itemTotal * cartItem.quantity;
     }

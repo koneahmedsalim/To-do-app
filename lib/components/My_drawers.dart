@@ -8,26 +8,39 @@ class MyDrawers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor:Colors.grey.shade700,
-      child: Column(children: [
-        //logo lola
-        Padding(
-          padding: const EdgeInsets.only(top: 100),
-          child: SizedBox(
-            child: Image.asset(""),
+      backgroundColor: Colors.grey.shade700,
+      child: Column(
+        children: [
+          //logo lola
+          Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: SizedBox(
+              child: Image.asset("lib\assets\images\logo1.png"),
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(25),
-          child: Divider(),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(25),
+            child: Divider(),
+          ),
 
-        //home
-        Mydrawertile(text: "Home", icon: Icons.home, onTap: () => Navigator.pop(context)),
-        
+          //home
+          Mydrawertile(
+              text: "Home",
+              icon: Icons.home,
+              onTap: () => Navigator.pop(context)),
+          //commande
+          Mydrawertile(
+              text: "commande",
+              icon: Icons.delivery_dining,
+              onTap: () => Navigator.pop(context)),
+          //reserve
+          Mydrawertile(
+              text: "reservations",
+              icon: Icons.room_service_sharp,
+              onTap: () => Navigator.pop(context)),
 
-        //paramettres
-               Mydrawertile(
+          //paramettres
+          Mydrawertile(
             text: "Paramettres",
             icon: Icons.settings,
             onTap: () {
@@ -38,13 +51,16 @@ class MyDrawers extends StatelessWidget {
               );
             },
           ),
-                Spacer(),
+          Spacer(),
 
-        //deco
-                Mydrawertile(text: "deconnexion", icon: Icons.logout, onTap: () {  },),
-
-      
-      ],),
+          //deco
+          Mydrawertile(
+            text: "deconnexion",
+            icon: Icons.logout,
+            onTap: () {},
+          ),
+        ],
+      ),
     );
   }
 }

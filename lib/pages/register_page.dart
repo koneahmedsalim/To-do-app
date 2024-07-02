@@ -33,7 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
             height: 25,
           ),
           Text(
-            'Lola cafe',
+            'Ixora Hotel',
             style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.inversePrimary),

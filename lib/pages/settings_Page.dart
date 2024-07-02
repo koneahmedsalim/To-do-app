@@ -30,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 //mode sombre
                 Text(
-                  "nuit",
+                  "dark mode ",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 //switch
