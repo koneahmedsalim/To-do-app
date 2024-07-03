@@ -12,7 +12,8 @@ class Mybuttons extends StatelessWidget {
       child: Container( padding: EdgeInsets.all(25),
       margin: EdgeInsets.symmetric(horizontal: 30,vertical: 30),
     
-decoration: BoxDecoration(color:Theme.of(context).colorScheme.secondary,         borderRadius: BorderRadius.all(Radius.circular(20))),
+decoration: BoxDecoration(
+  color:Theme.of(context).colorScheme.secondary,         borderRadius: BorderRadius.all(Radius.circular(20))),
 
         child: Center(
           child: Text(text, style: TextStyle(fontWeight: FontWeight.bold),
