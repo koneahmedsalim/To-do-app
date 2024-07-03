@@ -1,5 +1,7 @@
+// main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/MyDrawerTile.dart';
+import 'package:flutter_application_1/pages/reservations.dart';
 import 'package:flutter_application_1/pages/settings_Page.dart';
 
 class MyDrawers extends StatelessWidget {
@@ -15,11 +17,11 @@ class MyDrawers extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 100),
             child: SizedBox(
-              child: Image.asset("lib\assets\images\logo1.png"),
+              child: Image.asset("assets/images/logo1.png"),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(25),
+          const Padding(
+            padding: EdgeInsets.all(25),
             child: Divider(),
           ),
 
@@ -37,7 +39,13 @@ class MyDrawers extends StatelessWidget {
           Mydrawertile(
               text: "reservations",
               icon: Icons.room_service_sharp,
-              onTap: () => Navigator.pop(context)),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TableBookingScreen()), // Navigate to TableBookingScreen
+                );
+              }),
 
           //paramettres
           Mydrawertile(
@@ -51,7 +59,7 @@ class MyDrawers extends StatelessWidget {
               );
             },
           ),
-          Spacer(),
+          const Spacer(),
 
           //deco
           Mydrawertile(

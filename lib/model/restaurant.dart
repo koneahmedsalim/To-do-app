@@ -5,6 +5,7 @@ import 'package:flutter_application_1/model/food.dart';
 
 class Restaurant extends ChangeNotifier {
   final List<Food> _menu = [
+    // AFRCIAN
     Food(
         category: FoodCategory.african,
         availableAddons: [
@@ -81,7 +82,40 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra soda", price: 1500),
         ],
         description: "Burger with cheese",
-        imagePath: "assets/burgers/burger_with_cheese.jpeg",
+        imagePath: "assets/burger/boom beach burger.jpg",
+        price: 18000,
+        name: "Big Burger"),
+    Food(
+        category: FoodCategory.burgers,
+        availableAddons: [
+          Addon(name: "extra sauce", price: 200),
+          Addon(name: "extra cheese", price: 1000),
+          Addon(name: "extra soda", price: 1500),
+        ],
+        description: "Burger with chum from bikini bottom",
+        imagePath: "assets/burger/chum bucket paty.jpg",
+        price: 18000,
+        name: "chum burger"),
+    Food(
+        category: FoodCategory.burgers,
+        availableAddons: [
+          Addon(name: "extra sauce", price: 200),
+          Addon(name: "extra cheese", price: 1000),
+          Addon(name: "extra soda", price: 1500),
+        ],
+        description: "Burger crab meat",
+        imagePath: "assets/burger/le pate de crab.jpg",
+        price: 18000,
+        name: "patée de crabe"),
+    Food(
+        category: FoodCategory.burgers,
+        availableAddons: [
+          Addon(name: "extra sauce", price: 200),
+          Addon(name: "extra cheese", price: 1000),
+          Addon(name: "extra soda", price: 1500),
+        ],
+        description: "Burger with cheese",
+        imagePath: "assets/burger/boom beach burger.jpg",
         price: 18000,
         name: "Big Burger"),
     //pizza
@@ -92,11 +126,74 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra ketchup", price: 1000),
           Addon(name: "extra size", price: 1500),
         ],
-        description: "Pizza",
-        imagePath: "assets/pizza/pizza_reine.jpeg",
+        description: "Pizza au champignon de sepe",
+        imagePath: "assets/pizza/champignon sepe.jpg",
         price: 8000,
-        name: "Pizza Reine"),
+        name: "Pizza sepe"),
+    Food(
+        category: FoodCategory.pizza,
+        availableAddons: [
+          Addon(name: "extra pepperoni", price: 200),
+          Addon(name: "extra ketchup", price: 1000),
+          Addon(name: "extra size", price: 1500),
+        ],
+        description: "Pizza au jambon",
+        imagePath: "assets/pizza/jambon.jpg",
+        price: 8000,
+        name: "Pizza jambon"),
+    Food(
+        category: FoodCategory.pizza,
+        availableAddons: [
+          Addon(name: "extra pepperoni", price: 200),
+          Addon(name: "extra ketchup", price: 1000),
+          Addon(name: "extra size", price: 1500),
+        ],
+        description: "Pizza",
+        imagePath: "assets/pizza/margaritta.jpg",
+        price: 8000,
+        name: "Pizza margaritta"),
+    Food(
+        category: FoodCategory.pizza,
+        availableAddons: [
+          Addon(name: "extra pepperoni", price: 200),
+          Addon(name: "extra ketchup", price: 1000),
+          Addon(name: "extra size", price: 1500),
+        ],
+        description: "Pizza",
+        imagePath: "assets/pizza/pizza mixte.jpg",
+        price: 8000,
+        name: "Pizza mixte"),
     //dessert
+    Food(
+        category: FoodCategory.desserts,
+        availableAddons: [
+          Addon(name: "extra chocolate", price: 200),
+          Addon(name: "extra cake", price: 1000),
+        ],
+        description: "gateaux au xhocolat noir",
+        imagePath: "assets/dessert/chocolat cake coulant.jpg",
+        price: 28000,
+        name: "cascade Noire"),
+    Food(
+        category: FoodCategory.desserts,
+        availableAddons: [
+          Addon(name: "extra chocolate", price: 200),
+          Addon(name: "extra cake", price: 1000),
+        ],
+        description: "cup cakes a la francaise",
+        imagePath: "assets/dessert/cup cake francais.jpg",
+        price: 28000,
+        name: "cup cake"),
+    Food(
+        category: FoodCategory.desserts,
+        availableAddons: [
+          Addon(name: "extra chocolate", price: 200),
+          Addon(name: "extra cake", price: 1000),
+        ],
+        description: "gateaux a la fraise",
+        imagePath: "assets/dessert/gateau fraise.jpg",
+        price: 28000,
+        name: "gateau a la fraise"),
     Food(
         category: FoodCategory.desserts,
         availableAddons: [
@@ -107,49 +204,59 @@ class Restaurant extends ChangeNotifier {
         imagePath: "assets/desserts/forets_noire.jpeg",
         price: 28000,
         name: "Forets Noire"),
+    Food(
+        category: FoodCategory.desserts,
+        availableAddons: [
+          Addon(name: "extra chocolate", price: 200),
+          Addon(name: "extra cake", price: 1000),
+        ],
+        description: "gateaux au chocolat",
+        imagePath: "assets/dessert/veloute d'orange.jpg",
+        price: 28000,
+        name: "veloute d'orange sur son lit de chocolat"),
     // drinks
     Food(
         category: FoodCategory.drinks,
         availableAddons: [],
+        description: "boisson alcooliser aromatiser a la peche",
+        imagePath: "assets/drinks/3 pecher.jpg",
+        price: 1000,
+        name: "3 pechés"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
+        description: "boisson rouge ",
+        imagePath: "assets/drinks/lune sanglante.jpg",
+        price: 1000,
+        name: "lune sanglante"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
+        description: "vin",
+        imagePath: "assets/drinks/ruinard.jpg",
+        price: 1000,
+        name: "ruinard"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
+        description: "coktail rappelant les couleur d'hawai",
+        imagePath: "assets/drinks/tropical coktail.jpg",
+        price: 1000,
+        name: "cocktail tropicale"),
+    Food(
+        category: FoodCategory.drinks,
+        availableAddons: [],
         description: "Coca",
-        imagePath: "lib\assets\drinks\coca.png",
+        imagePath: "assets/drinks/coca.png",
         price: 1000,
         name: "Coca"),
     Food(
         category: FoodCategory.drinks,
         availableAddons: [],
-        description: "Coca",
-        imagePath: "lib\assets\drinks\coca.png",
+        description: "liqueur",
+        imagePath: "/assets/drinks/whisky.jpg",
         price: 1000,
-        name: "Coca"),
-    Food(
-        category: FoodCategory.drinks,
-        availableAddons: [],
-        description: "Coca",
-        imagePath: "lib\assets\drinks\coca.png",
-        price: 1000,
-        name: "Coca"),
-    Food(
-        category: FoodCategory.drinks,
-        availableAddons: [],
-        description: "Coca",
-        imagePath: "lib\assets\drinks\coca.png",
-        price: 1000,
-        name: "Coca"),
-    Food(
-        category: FoodCategory.drinks,
-        availableAddons: [],
-        description: "Coca",
-        imagePath: "lib\assets\drinks\coca.png",
-        price: 1000,
-        name: "Coca"),
-    Food(
-        category: FoodCategory.drinks,
-        availableAddons: [],
-        description: "Coca",
-        imagePath: "lib\assets\drinks\coca.png",
-        price: 1000,
-        name: "Coca"),
+        name: "whisky"),
     //sides
     Food(
         category: FoodCategory.sides,

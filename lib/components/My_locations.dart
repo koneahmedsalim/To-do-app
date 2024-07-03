@@ -31,7 +31,7 @@ class MyLocations extends StatelessWidget {
         GestureDetector( onTap: () => openLocationSearchBox(context),
           child: Row(children: [
             //address
-            Text("lolacafe a babi"),
+            Text("Ixora hotel"),
             //menue descend
             Icon(Icons.keyboard_arrow_down_rounded)
           ],),

@@ -23,7 +23,7 @@ class MyFoodTile extends StatelessWidget {
                     children: [
                       Text(food.name),
                       Text(
-                        '/fcfa' + food.price.toString(),
+                        food.price.toString()+ 'fcfa' ,
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.primary),
                       ),
