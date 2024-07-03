@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/authentifications/login_or_register.dart';
 import 'package:flutter_application_1/model/restaurant.dart';
 import 'package:flutter_application_1/overview/onboarding_overview.dart';
 

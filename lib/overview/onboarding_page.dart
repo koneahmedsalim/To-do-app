@@ -51,7 +51,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const CircularProgressIndicator(
+                 CircularProgressIndicator(
                   color: Colors.white,
                 )
               ],
