@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/authentifications/login_or_register.dart';
 
 class OnboardingOne extends StatelessWidget {
   const OnboardingOne({super.key, required this.controller});
@@ -13,41 +14,51 @@ class OnboardingOne extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image.asset(
-            "//",
+            'assets/images/chef.png', // Replace with your actual image path
           ),
           const Column(
             children: [
               Text(
-                "Bienvenue a IIT,l'école qui forme par la pratique",
+                "Bienvenue à Hotel IXORA",
                 style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 15,
               ),
               Text(
-                "Fondé en 2019, l'Institut Ivoirien de Technologie (IIT) est devenu un acteur clé de l'éducation en Côte d'Ivoire. Ambitionnant de représenter le Massachusetts Institute of Technology (MIT) en Afrique, il a marqué l'histoire par la visite du directeur du MIT et les victoires de ses étudiants dans des concours nationaux et internationaux.",
+                "hotel.",
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-              )
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "hotel",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+              ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      side: const BorderSide(color: Colors.blue),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(7))),
-                  onPressed: () {
-                    controller.nextPage(
-                        duration: const Duration(milliseconds: 250),
-                        curve: Curves.easeIn);
-                  },
-                  child: const Text(
-                    'Suivant',
-                    style: TextStyle(color: Colors.blue),
-                  )),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  side: const BorderSide(color: Colors.blue),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7)),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginOrRegister()),
+                  );
+                },
+                child: const Text(
+                  'Suivant',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
             ],
           ),
         ],

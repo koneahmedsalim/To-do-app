@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/authentifications/login_or_register.dart';
 import 'package:flutter_application_1/model/restaurant.dart';
+import 'package:flutter_application_1/overview/onboarding_overview.dart';
 
 import 'package:flutter_application_1/themes/themes_provider.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginOrRegister(),
+      home: const OnboardingOverview(),
       theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }

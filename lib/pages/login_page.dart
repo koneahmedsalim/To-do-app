@@ -1,6 +1,5 @@
 import 'package:flutter_application_1/components/Mybuttons.dart';
 import 'package:flutter_application_1/components/my_textfield.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/scaner_page.dart';
 
@@ -17,49 +16,51 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
- void login(){
-  //fill out 
-  Navigator.push(context, MaterialPageRoute(builder: (context) => ScanerPage(),)
-  ); }
+  void login() {
+    //fill out 
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ScanerPage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.lock,
-            size: 72,
-            color: Theme.of(context).colorScheme.inversePrimary,
-          ),
+          Image.asset("assets/logo.png",
+          width: 300.5,
+          height: 200.5,),  // Correction here
           SizedBox(
             height: 25,
           ),
-          Text(
-            'Ixora Hotel',
-            style: TextStyle(
-                fontSize: 16,
-                color: Theme.of(context).colorScheme.inversePrimary),
+        
+          SizedBox(
+            height: 10,
+          ),
+          MyTextfield(
+            controller: emailController,
+            hintText: "email",
+            obscureText: false,
           ),
           SizedBox(
             height: 10,
           ),
           MyTextfield(
-              controller: emailController,
-              hintText: "email",
-              obscureText: false),
+            controller: passwordController,
+            hintText: "Mots de passe",
+            obscureText: true,
+          ),
           SizedBox(
             height: 10,
           ),
-          MyTextfield(
-              controller: passwordController,
-              hintText: "Mots de passe",
-              obscureText: true),
-          SizedBox(
-            height: 10,
+          Mybuttons(
+            onTap: login,
+            text: "Se connecter",
           ),
-          Mybuttons(onTap: login, text: "Se connecter"),
           SizedBox(
             height: 10,
           ),
@@ -75,7 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   "Inscrivez-vous maintenant!",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.blue.shade500),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue.shade500,
+                  ),
                 ),
               ),
             ],

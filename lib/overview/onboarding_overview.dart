@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/overview/onboarding_one.dart';
 
-
 class OnboardingOverview extends StatefulWidget {
   const OnboardingOverview({super.key});
 
@@ -10,9 +9,7 @@ class OnboardingOverview extends StatefulWidget {
 }
 
 class _OnboardingOverviewState extends State<OnboardingOverview> {
-  //
   int currentPage = 0;
-
   late PageController controller;
 
   @override
@@ -36,10 +33,7 @@ class _OnboardingOverviewState extends State<OnboardingOverview> {
         },
         controller: controller,
         children: [
-          OnboardingOne(
-            controller: controller,
-          ), // indice 0
-         
+          OnboardingOne(controller: controller), // Index 0
         ],
       ),
     );
