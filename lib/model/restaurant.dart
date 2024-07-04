@@ -256,19 +256,7 @@ class Restaurant extends ChangeNotifier {
         description: "liqueur",
         imagePath: "/assets/drinks/whisky.jpg",
         price: 1000,
-        name: "whisky"),
-    //sides
-    Food(
-        category: FoodCategory.sides,
-        availableAddons: [
-          Addon(name: "extra chocolate", price: 200),
-          Addon(name: "extra sugar", price: 1000),
-          Addon(name: "extra honey", price: 1500),
-        ],
-        description: "Crêpes",
-        imagePath: "/assets/drinks/whisky.jpg",
-        price: 8000,
-        name: "Crêpes"),
+        name: "whisky"),   
   ];
 
   List<Food> get menu => _menu;

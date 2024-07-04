@@ -32,7 +32,7 @@ class MyDrawers extends StatelessWidget {
               onTap: () => Navigator.pop(context)),
           //commande
           Mydrawertile(
-              text: "commande",
+              text: "suivis de commande",
               icon: Icons.delivery_dining,
               onTap: () => Navigator.pop(context)),
           //reserve

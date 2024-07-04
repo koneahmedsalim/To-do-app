@@ -36,8 +36,10 @@ class MyQuanitySelector extends StatelessWidget {
           //quantite
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              quantity.toString(),
+            child: SizedBox( width: 20,
+              child: Text(
+                quantity.toString(),
+              ),
             ),
           ),
           // augmenter

@@ -29,7 +29,7 @@ class MyDescriptionbox extends StatelessWidget {
                   style: myPrimaryTextstyle,
                 ),
                 Text(
-                  'prix totale',
+                  'prix ',
                   style: mysecondaryTextstyle,
                 ),
               ],
@@ -42,7 +42,7 @@ class MyDescriptionbox extends StatelessWidget {
                   style: myPrimaryTextstyle,
                 ),
                 Text(
-                  'temps de livraison totale',
+                  'temps de livraison',
                   style: mysecondaryTextstyle,
                 ),
               ],

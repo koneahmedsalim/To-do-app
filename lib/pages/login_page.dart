@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset("assets/logo.png",
+          Image.asset("assets/images/logo.png",
           width: 300.5,
           height: 200.5,),  // Correction here
           SizedBox(

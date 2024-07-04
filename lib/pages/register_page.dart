@@ -24,10 +24,8 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.lock,
-            size: 72,
-            color: Theme.of(context).colorScheme.inversePrimary,
+          Image.asset(
+           " assets/images/logo.png"
           ),
           SizedBox(
             height: 25,
