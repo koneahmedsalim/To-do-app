@@ -1,46 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/Mybuttons.dart';
 import 'package:flutter_application_1/model/food.dart';
+import 'package:flutter_application_1/model/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class FoodDetails extends StatefulWidget {
   final Food food;
-  final Map<Addon,bool> selectedAddons={};
+  final Map<Addon, bool> selectedAddons = {};
 
-   FoodDetails({super.key, required this.food})
-{
-//initialise les extra  a faux 
-for (Addon addon in food.availableAddons){
-  selectedAddons[addon]=false;
-}
-}
+  FoodDetails({super.key, required this.food}) {
+    // Initialiser les extras à faux
+    for (Addon addon in food.availableAddons) {
+      selectedAddons[addon] = false;
+    }
+  }
+
   @override
   State<FoodDetails> createState() => _FoodDetailsState();
 }
 
 class _FoodDetailsState extends State<FoodDetails> {
+  // Méthode addToCart
+  void addToCart(Food food, Map<Addon, bool> selectedAddons) {
+    // Fermer pour revenir au menu
+    Navigator.pop(context);
+
+    List<Addon> currentlySelectedAddons = [];
+    for (Addon addon in widget.food.availableAddons) {
+      if (widget.selectedAddons[addon] == true) {
+        currentlySelectedAddons.add(addon);
+      }
+    }
+
+    // Ajouter au panier
+    context.read<Restaurant>().addToCart(food, currentlySelectedAddons);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        //scaffold
-        Scaffold(
-      appBar: AppBar(),
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //imag de nourriture
+            // Image de nourriture
             Image.asset(widget.food.imagePath),
             Padding(
               padding: const EdgeInsets.all(25.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //name
+                  // Nom
                   Text(
                     widget.food.name,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  //price
+                  // Prix
                   Text(
                     widget.food.price.toString(),
                     style: TextStyle(
@@ -51,8 +72,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                   SizedBox(
                     height: 10,
                   ),
-        
-                  //descript
+                  // Description
                   Text(
                     widget.food.description,
                   ),
@@ -60,7 +80,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                     height: 10,
                   ),
                   Text(
-                    "extra",
+                    "Extras",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -69,7 +89,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                   SizedBox(
                     height: 10,
                   ),
-                  //addons
+                  // Addons
                   Container(
                     decoration: BoxDecoration(
                         border: Border.all(
@@ -80,44 +100,39 @@ class _FoodDetailsState extends State<FoodDetails> {
                         padding: EdgeInsets.zero,
                         itemCount: widget.food.availableAddons.length,
                         itemBuilder: (context, index) {
-                          // recuperer les extras individuellement*
+                          // Récupérer les extras individuellement
                           Addon addon = widget.food.availableAddons[index];
-                          //retourner/montrer les cheikbox
+                          // Retourner/montrer les checkboxes
                           return CheckboxListTile(
                             title: Text(addon.name),
-                            subtitle: Text('\fcfa${addon.price}',style: TextStyle(color: Theme.of(context).colorScheme.secondary),),
+                            subtitle: Text(
+                              '\fcfa${addon.price}',
+                              style: TextStyle(
+                                  color: Theme.of(context).colorScheme.secondary),
+                            ),
                             value: widget.selectedAddons[addon],
                             onChanged: (bool? value) {
                               setState(() {
-                                widget.selectedAddons[addon]=value!;
+                                widget.selectedAddons[addon] = value!;
                               });
                             },
                           );
                         }),
-                  )
+                  ),
                 ],
               ),
             ),
-            //boutton ajouter
-            Mybuttons(onTap: (){}, text: "Add to cart "),
-
-            SizedBox(height: 25,)
+            // Bouton ajouter
+            Mybuttons(
+              onTap: () => addToCart(widget.food, widget.selectedAddons),
+              text: "Add to cart",
+            ),
+            SizedBox(
+              height: 25,
+            ),
           ],
         ),
       ),
-    ),
-        //retour button
-        SafeArea(
-          child: Opacity(
-            opacity: 0.6,
-            child: Container(
-              margin: EdgeInsets.only(left: 25),
-              decoration: BoxDecoration(color: Theme.of(context).colorScheme.secondary,shape: BoxShape.circle),
-              child: IconButton(icon: Icon(Icons.arrow_back), onPressed: () => Navigator.pop(context),)
-            ),
-          ),
-        )
-      ],
     );
   }
 }

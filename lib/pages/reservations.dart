@@ -1,4 +1,3 @@
-// table_booking_screen.dart
 import 'package:flutter/material.dart';
 
 class TableBookingScreen extends StatelessWidget {
@@ -24,7 +23,7 @@ class TableBookingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('All Tables'),
+        title: Text('Table pour réservation'),
         centerTitle: true,
       ),
       body: Padding(
@@ -38,7 +37,17 @@ class TableBookingScreen extends StatelessWidget {
             mainAxisSpacing: 10.0,
           ),
           itemBuilder: (context, index) {
-            return TableTile(tableInfo: tables[index]);
+            return GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ReservationFormDialog(tableInfo: tables[index]);
+                  },
+                );
+              },
+              child: TableTile(tableInfo: tables[index]),
+            );
           },
         ),
       ),
@@ -82,12 +91,89 @@ class TableTile extends StatelessWidget {
             ),
             if (tableInfo.people != null)
               Text(
-                '${tableInfo.people} People',
-                style: TextStyle(color: Colors.grey),
+                '${tableInfo.people} personnes',
+                style: TextStyle(color: Color.fromARGB(255, 230, 177, 20),),
               ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class ReservationFormDialog extends StatefulWidget {
+  final TableInfo tableInfo;
+
+  ReservationFormDialog({required this.tableInfo});
+
+  @override
+  _ReservationFormDialogState createState() => _ReservationFormDialogState();
+}
+
+class _ReservationFormDialogState extends State<ReservationFormDialog> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _peopleController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text('Formulaire de Reservation - Table ${widget.tableInfo.number}'),
+      content: SingleChildScrollView(
+        child: Column(
+          children: [
+            TextField(
+              controller: _nameController,
+              decoration: InputDecoration(
+                labelText: 'Nom :',
+              ),
+            ),
+            TextField(
+              controller: _phoneController,
+              decoration: InputDecoration(
+                labelText: 'Numéro de téléphone :',
+              ),
+              keyboardType: TextInputType.phone,
+            ),
+            TextField(
+              controller: _peopleController,
+              decoration: InputDecoration(
+                labelText: 'Nombre de personne :',
+              ),
+              keyboardType: TextInputType.number,
+            ),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Annuler',
+            style: TextStyle(color: Color.fromARGB(255, 230, 177, 20)),
+          ),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white, // Button background color
+            side: BorderSide(color: Color.fromARGB(255, 230, 177, 20)), // Border color
+          ),
+          onPressed: () {
+            // Handle form submission
+            print('Réservation pour la table ${widget.tableInfo.number}');
+            print('Nom : ${_nameController.text}');
+            print('Numéro de telphone : ${_phoneController.text}');
+            print('nombre de personne(s) : ${_peopleController.text}');
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Reserver',
+            style: TextStyle(color: Color.fromARGB(255, 230, 177, 20)), // Text color
+          ),
+        ),
+      ],
     );
   }
 }

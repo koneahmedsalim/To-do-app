@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/my_tabBar.dart';
+import 'package:flutter_application_1/pages/cart_page.dart';
 
 class MySilverAppbar extends StatefulWidget {
   final Widget title;
@@ -10,7 +11,8 @@ class MySilverAppbar extends StatefulWidget {
     Key? key,
     required this.title,
     required this.child,
-    required this.leading, required TabController tabController,
+    required this.leading,
+    required TabController tabController,
   }) : super(key: key);
 
   @override
@@ -41,7 +43,17 @@ class _MySilverAppbarState extends State<MySilverAppbar> with SingleTickerProvid
       title: widget.title,
       pinned: true,
       leading: widget.leading,
-      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart))],
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CartPage()),
+            );
+          },
+          icon: Icon(Icons.shopping_cart),
+        ),
+      ],
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
           padding: const EdgeInsets.only(bottom: 50),

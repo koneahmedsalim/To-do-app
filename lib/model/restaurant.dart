@@ -70,7 +70,7 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra viandes", price: 1500),
         ],
         description: "Salades Caesar",
-        imagePath: "assets/salads/salade_cesar.jpeg",
+        imagePath: "/assets/drinks/whisky.jpg",
         price: 9000,
         name: "Salade Caesar"),
     //burger
@@ -266,16 +266,16 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra honey", price: 1500),
         ],
         description: "Crêpes",
-        imagePath: "assets/sides/crepes.jpeg",
+        imagePath: "/assets/drinks/whisky.jpg",
         price: 8000,
         name: "Crêpes"),
   ];
 
   List<Food> get menu => _menu;
+    List<CartItem> get cart => _cart;
 
+//user cart
   final List<CartItem> _cart = [];
-
-  List<CartItem> get cart => _cart;
 
   // Add to cart operations
   void addToCart(Food food, List<Addon> selectedAddons) {
@@ -319,5 +319,18 @@ class Restaurant extends ChangeNotifier {
       total += itemTotal * cartItem.quantity;
     }
     return total;
+  }
+  // get total Number in cart of itzms
+  int getTotalItemCount(){
+    int totalItemCount=0;
+    for (CartItem cartItem in _cart){
+      totalItemCount += cartItem.quantity;
+    }
+    return totalItemCount;
+  }
+  //clear cart 
+  void clearCart (){
+    _cart.clear();
+    notifyListeners();
   }
 }
