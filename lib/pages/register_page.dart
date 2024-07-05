@@ -25,17 +25,12 @@ class _RegisterPageState extends State<RegisterPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-           " assets/images/logo.png"
+           "assets/images/logo.png"
           ),
           SizedBox(
             height: 25,
           ),
-          Text(
-            'Ixora Hotel',
-            style: TextStyle(
-                fontSize: 16,
-                color: Theme.of(context).colorScheme.inversePrimary),
-          ),
+        
           SizedBox(
             height: 10,
           ),

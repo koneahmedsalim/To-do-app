@@ -8,60 +8,56 @@ class OnboardingOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Image.asset(
-            'assets/images/chef.png', // Replace with your actual image path
-          ),
-          const Column(
-            children: [
-              Text(
-                "Bienvenue à Hotel IXORA",
-                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                "hotel.",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "hotel",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  side: const BorderSide(color: Colors.blue),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7)),
+    return Container(
+      color: Colors.white, // Fond en blanc
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Image.asset(
+              'assets/images/chef.png', // Replace with your actual image path
+            ),
+            const Column(
+              children: [
+                Text(
+                  "Bienvenue à l'Hotel IXORA de San-Pédro",
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginOrRegister()),
-                  );
-                },
-                child: const Text(
-                  'Suivant',
-                  style: TextStyle(color: Colors.blue),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                    side: const BorderSide(
+                      color: Color.fromARGB(255, 230, 177, 20),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginOrRegister(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'Suivant',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 230, 177, 20),
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
