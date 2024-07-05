@@ -31,10 +31,10 @@ class MyDrawers extends StatelessWidget {
               icon: Icons.home,
               onTap: () => Navigator.pop(context)),
           //commande
-          Mydrawertile(
-              text: "suivis de commande",
-              icon: Icons.delivery_dining,
-              onTap: () => Navigator.pop(context)),
+         // Mydrawertile(
+           //   text: "suivis de commande",
+             // icon: Icons.delivery_dining,
+              //onTap: () => Navigator.pop(context)),
           //reserve
           Mydrawertile(
               text: "reservations",
