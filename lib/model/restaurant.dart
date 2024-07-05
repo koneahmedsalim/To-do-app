@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/cart_item.dart';
 import 'package:flutter_application_1/model/food.dart';
+import 'package:intl/intl.dart';
 
 class Restaurant extends ChangeNotifier {
   final List<Food> _menu = [
@@ -14,7 +15,7 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra viandes", price: 1500),
         ],
         description: "Foutou Bananne",
-        imagePath: "assets/african/foutou_bananne.jpeg",
+        imagePath: "assets/african/fouofu.jpg",
         price: 8000,
         name: "Foutou Bananne"),
     Food(
@@ -25,7 +26,7 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra viandes", price: 1500),
         ],
         description: "Foutou Bananne",
-        imagePath: "assets/african/foutou_bananne.jpeg",
+        imagePath: "assets/african/fouofu.jpg",
         price: 8000,
         name: "Foutou Bananne"),
     Food(
@@ -36,7 +37,7 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra viandes", price: 1500),
         ],
         description: "Foutou Bananne",
-        imagePath: "assets/african/foutou_bananne.jpeg",
+        imagePath: "assets/african/fouofu.jpg",
         price: 8000,
         name: "Foutou Bananne"),
     Food(
@@ -47,7 +48,7 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra viandes", price: 1500),
         ],
         description: "Foutou Bananne",
-        imagePath: "assets/african/foutou_bananne.jpeg",
+        imagePath: "assets/african/fouofu.jpg",
         price: 8000,
         name: "Foutou Bananne"),
     Food(
@@ -58,7 +59,7 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra viandes", price: 1500),
         ],
         description: "Foutou Bananne",
-        imagePath: "assets/african/foutou_bananne.jpeg",
+        imagePath: "assets/african/fouofu.jpg",
         price: 8000,
         name: "Foutou Bananne"),
     //salads
@@ -70,7 +71,7 @@ class Restaurant extends ChangeNotifier {
           Addon(name: "extra viandes", price: 1500),
         ],
         description: "Salades Caesar",
-        imagePath: "/assets/drinks/whisky.jpg",
+        imagePath: "assets/african/fouofu.jpg",
         price: 9000,
         name: "Salade Caesar"),
     //burger
@@ -254,7 +255,7 @@ class Restaurant extends ChangeNotifier {
         category: FoodCategory.drinks,
         availableAddons: [],
         description: "liqueur",
-        imagePath: "/assets/drinks/whisky.jpg",
+        imagePath: "assets/drinks/whisky.jpg",
         price: 1000,
         name: "whisky"),   
   ];
@@ -321,4 +322,45 @@ class Restaurant extends ChangeNotifier {
     _cart.clear();
     notifyListeners();
   }
+ // generate a receipt
+String displayCartReceipt() {
+  final receipt = StringBuffer();
+  receipt.writeln("Here's your receipt.");
+  receipt.writeln();
+
+  // format the date to include up to seconds only
+  String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+  receipt.writeln(formattedDate);
+  receipt.writeln();
+  receipt.writeln("______________");
+for (final CartItem in _cart){
+  receipt.writeln("${CartItem.quantity} x ${CartItem.food.name}-${_formatPrice(CartItem.food.price)}");
+  if(CartItem.selectedAddons.isNotEmpty){
+    receipt.writeln("extra:${_formatAddons(CartItem.selectedAddons)}");
+  }
+  receipt.writeln();
+}
+receipt.writeln("_______________");
+  receipt.writeln();
+  receipt.writeln("Total :${getTotalItemCount()}");
+    receipt.writeln("Total :${_formatPrice(getTotalPrice())}");
+
+    return receipt.toString();
+
+
+
+}
+
+  // format double value into money
+  String _formatPrice(double price) {
+    return "\$${price.toStringAsFixed(2)}";
+  }
+
+  // format list of addons into a string summary
+  String _formatAddons(List<Addon> addons) {
+    return addons
+      .map((addon) => "${addon.name} (\$${_formatPrice(addon.price)})")
+      .join(", ");
+  }
+
 }
