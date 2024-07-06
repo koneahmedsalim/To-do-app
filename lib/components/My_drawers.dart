@@ -1,6 +1,7 @@
 // main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/MyDrawerTile.dart';
+import 'package:flutter_application_1/pages/help.dart';
 import 'package:flutter_application_1/pages/reservations.dart';
 import 'package:flutter_application_1/pages/settings_Page.dart';
 
@@ -31,10 +32,18 @@ class MyDrawers extends StatelessWidget {
               icon: Icons.home,
               onTap: () => Navigator.pop(context)),
           //commande
-         // Mydrawertile(
-           //   text: "suivis de commande",
-             // icon: Icons.delivery_dining,
-              //onTap: () => Navigator.pop(context)),
+          Mydrawertile(
+              text: "Help",
+              icon: Icons.help,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          FeedbackForm()), // Navigate to TableBookingScreen
+                );
+              }),
           //reserve
           Mydrawertile(
               text: "reservations",
@@ -43,7 +52,9 @@ class MyDrawers extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => TableBookingScreen()), // Navigate to TableBookingScreen
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          TableBookingScreen()), // Navigate to TableBookingScreen
                 );
               }),
 
