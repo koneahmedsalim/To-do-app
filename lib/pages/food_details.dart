@@ -74,7 +74,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                   ),
                   // Description
                   Text(
-                    widget.food.description,
+                    widget.food.description,style: TextStyle(color: Colors.black),
                   ),
                   SizedBox(
                     height: 10,

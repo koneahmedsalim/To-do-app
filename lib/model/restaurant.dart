@@ -257,11 +257,11 @@ class Restaurant extends ChangeNotifier {
         description: "liqueur",
         imagePath: "assets/drinks/whisky.jpg",
         price: 1000,
-        name: "whisky"),   
+        name: "whisky"),
   ];
 
   List<Food> get menu => _menu;
-    List<CartItem> get cart => _cart;
+  List<CartItem> get cart => _cart;
 
 //user cart
   final List<CartItem> _cart = [];
@@ -309,58 +309,58 @@ class Restaurant extends ChangeNotifier {
     }
     return total;
   }
+
   // get total Number in cart of itzms
-  int getTotalItemCount(){
-    int totalItemCount=0;
-    for (CartItem cartItem in _cart){
+  int getTotalItemCount() {
+    int totalItemCount = 0;
+    for (CartItem cartItem in _cart) {
       totalItemCount += cartItem.quantity;
     }
     return totalItemCount;
   }
-  //clear cart 
-  void clearCart (){
+
+  //clear cart
+  void clearCart() {
     _cart.clear();
     notifyListeners();
   }
- // generate a receipt
-String displayCartReceipt() {
-  final receipt = StringBuffer();
-  receipt.writeln("Here's your receipt.");
-  receipt.writeln();
 
-  // format the date to include up to seconds only
-  String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
-  receipt.writeln(formattedDate);
-  receipt.writeln();
-  receipt.writeln("______________");
-for (final CartItem in _cart){
-  receipt.writeln("${CartItem.quantity} x ${CartItem.food.name}-${_formatPrice(CartItem.food.price)}");
-  if(CartItem.selectedAddons.isNotEmpty){
-    receipt.writeln("extra:${_formatAddons(CartItem.selectedAddons)}");
-  }
-  receipt.writeln();
-}
-receipt.writeln("_______________");
-  receipt.writeln();
-  receipt.writeln("Total :${getTotalItemCount()}");
-    receipt.writeln("Total :${_formatPrice(getTotalPrice())}");
+   String displayCartReceipt() {
+    final receipt = StringBuffer();
+    receipt.writeln("Here's your receipt.");
+    receipt.writeln();
+
+    // Format the date to include up to seconds only
+    String formattedDate =
+        DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+    receipt.writeln(formattedDate);
+    receipt.writeln();
+    receipt.writeln("______________");
+    for (final cartItem in _cart) {
+      receipt.writeln(
+          "${cartItem.quantity} x ${cartItem.food.name} - ${_formatPrice(cartItem.food.price)}");
+      if (cartItem.selectedAddons.isNotEmpty) {
+        receipt.writeln("Extras: ${_formatAddons(cartItem.selectedAddons)}");
+      }
+      receipt.writeln();
+    }
+    receipt.writeln("_______________");
+    receipt.writeln();
+    receipt.writeln("Total Items: ${getTotalItemCount()}");
+    receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
 
     return receipt.toString();
+  }
 
-
-
-}
-
-  // format double value into money
+  // Format double value into money
   String _formatPrice(double price) {
     return "\$${price.toStringAsFixed(2)}";
   }
 
-  // format list of addons into a string summary
+  // Format list of addons into a string summary
   String _formatAddons(List<Addon> addons) {
     return addons
-      .map((addon) => "${addon.name} (\$${_formatPrice(addon.price)})")
-      .join(", ");
+        .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+        .join(", ");
   }
-
 }

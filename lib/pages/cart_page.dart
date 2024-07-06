@@ -68,7 +68,7 @@ class CartPage extends StatelessWidget {
               ),
             ),
             //payer
-             Mybuttons(onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=>PayementPage() )), text: "Payer"),
+             Mybuttons(onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context)=>PaymentPage() )), text: "Payer"),
             const SizedBox(height: 25,)
           ],
         ),
