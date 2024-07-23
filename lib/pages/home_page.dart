@@ -4,6 +4,7 @@ import 'package:flutter_application_1/components/My_drawers.dart';
 import 'package:flutter_application_1/components/My_food_tile.dart';
 import 'package:flutter_application_1/components/My_locations.dart';
 import 'package:flutter_application_1/components/My_silver_AppBar.dart';
+import 'package:flutter_application_1/components/My_tabbar.dart'; // Import MyTabbar
 import 'package:flutter_application_1/model/food.dart';
 import 'package:flutter_application_1/model/restaurant.dart';
 import 'package:flutter_application_1/pages/food_details.dart';
@@ -81,23 +82,26 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 const Divider(indent: 25, endIndent: 25),
                 MyLocations(),
                 MyDescriptionbox(),
-                TabBar(
-                  controller: _tabController,
-                  tabs: FoodCategory.values.map((category) {
-                    return Tab(text: category.toString().split('.').last);
-                  }).toList(),
-                ),
+                
+                // MyTabbar(tabController: _tabController), deuxieme la nprmalement 
               ],
             ),
           ),
         ],
-        body: Consumer<Restaurant>(
-          builder: (context, restaurant, child) {
-            return TabBarView(
-              controller: _tabController,
-              children: getFoodInThisCategory(restaurant.menu),
-            );
-          },
+        body: Column(
+          children: [
+            MyTabbar(tabController: _tabController), 
+            Expanded(
+              child: Consumer<Restaurant>(
+                builder: (context, restaurant, child) {
+                  return TabBarView(
+                    controller: _tabController,
+                    children: getFoodInThisCategory(restaurant.menu),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
